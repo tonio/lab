@@ -6,6 +6,7 @@
   {#each items as item}
     <li>
       <span class=name>{item.Nom}</span>
+      <span class=count>{item['Quantité']}</span>
       <span class=location>{item.Salle}</span>
     </li>
   {/each}
@@ -19,12 +20,23 @@
   li {
     display: flex;
     border: 1px solid #ddd;
-    border-radius: 0.25em;
+    border-radius: var(--radius);
     margin: 0.5em 0;
     padding: 0.25em;
   }
   .name {
     flex: 1
+  }
+  .count, .location {
+    display: inline-block;
+    text-align: center;
+  }
+  .count {
+    width: 2em;
+  }
+  .location {
+    width: 3em;
+    background: vars(--blue);
   }
 </style>
 

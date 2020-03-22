@@ -1,30 +1,27 @@
 <script>
   import List from './List.svelte'
-  import CSV from 'csv.js'
+  import Search from './Search.svelte'
+  import { loadData } from './data'
 
-  let items
-  async function loadData() {
-    let response = await fetch(`https://docs.google.com/spreadsheets/d/e/2PACX-1vQbUP2MhLu5P34MJvOq1OqlLRAmQKMCjfILzEF-Ldcu7eF7UY-7f0Z2okTe-iIVUYUalpYhSK-KeM05/pub?output=csv`)
-    const data = await response.text()
-    items = CSV.decode(data)
-  }
-  loadData()
+  let loading = loadData()
 
 </script>
 
-<h1>Inventaire</h1>
-{#if items===undefined}
-  <p>toto</p>
-{:else}
-  {#await items}
-    <p>Loading...</p>
-  {:then value}
-    <List {items}></List>
-  {:catch error}
-    <p>
-      Erreur de chargement du Google Sheet: «{error.message}»
-    </p>
-  {/await}
-{/if}
+<Search></Search>
+{#await loading}
+  <p>Loading...</p>
+{:then items}
+  <List {items}></List>
+{:catch error}
+  <p>
+    Erreur de chargement du Google Sheet: «{error.message}»
+  </p>
+{/await}
 
+<style>
+  :global(body) {
+    --blue: lightblue;
+    --radius: 0.25em;
+  }
+</style>
 
