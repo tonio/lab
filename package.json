@@ -16,6 +16,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "csv.js": "^1.0.7",
     "sirv-cli": "^0.4.4"
   },
   "prettier": {
