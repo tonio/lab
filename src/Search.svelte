@@ -1,15 +1,19 @@
 <script>
   import { createEventDispatcher } from 'svelte'
+  import { onMount } from 'svelte'
 	const dispatch = createEventDispatcher()
 
   let value = ''
+  let input
   const clear = () => { value = '' }
   $: dispatch('change', { value })
+
+  onMount(() => input.focus())
 </script>
 
 <div class="container">
   <button class:value class="clear" on:click="{clear}">&times;</button>
-  <input type="text" bind:value>
+  <input bind:this={input} type="text" bind:value tabindex="1">
 </div>
 
 <style>
