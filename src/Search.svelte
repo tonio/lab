@@ -8,7 +8,7 @@
 </script>
 
 <div class="container">
-  <button class="clear" on:click="{clear}">&times;</button>
+  <button class:value class="clear" on:click="{clear}">&times;</button>
   <input type="text" bind:value>
 </div>
 
@@ -27,10 +27,16 @@
     right: 0;
     border: none;
     background: none;
-    width: 2em;
+    width: 1.5em;
+    font-size: 1.5em;
+    padding: 0px;
+    display: none;
   }
   .clear:hover {
     cursor: pointer;
+  }
+  .value {
+    display: inline-block;
   }
 </style>
 
