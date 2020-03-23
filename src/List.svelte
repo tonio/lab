@@ -1,9 +1,15 @@
 <script>
+  import { match } from './data'
+
   export let items
+  export let search
+  export let category = ''
+
+  $: filtered = (search == '') ? [] : match(search, items)
 </script>
 
 <ul>
-  {#each items as item}
+  {#each filtered as item}
     <li>
       <span class=name>{item.Nom}</span>
       <span class=count>{item['Quantité']}</span>
@@ -22,6 +28,9 @@
     border: 1px solid #ddd;
     border-radius: var(--radius);
     margin: 0.5em 0;
+    padding: 0;
+  }
+  .name, .count, .location {
     padding: 0.25em;
   }
   .name {
@@ -36,7 +45,7 @@
   }
   .location {
     width: 3em;
-    background: vars(--blue);
+    background: var(--blue);
   }
 </style>
 
