@@ -5,7 +5,9 @@
   export let search
   export let category = ''
 
-  $: filtered = (search == '') ? [] : match(search, items)
+  const MAX = 15
+
+  $: filtered = (search == '') ? [] : match(search, items, MAX)
 </script>
 
 <ul>

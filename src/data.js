@@ -9,7 +9,7 @@ export async function loadData() {
     .then(items => items.sort((a, b) => a.Nom.localeCompare(b.Nom)))
 }
 
-export function match(search, items) {
+export function match(search, items, max) {
   search = search.toLowerCase()
-  return items.filter(item => item.Nom.toLowerCase().indexOf(search) !== -1)
+  return items.filter(item => item.Nom.toLowerCase().indexOf(search) !== -1).splice(0, max)
 }
