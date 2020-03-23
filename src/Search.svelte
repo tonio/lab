@@ -13,7 +13,7 @@
 
 <div class="container">
   <button class:value class="clear" on:click="{clear}">&times;</button>
-  <input bind:this={input} type="text" bind:value tabindex="1">
+  <input bind:this={input} type="text" bind:value>
 </div>
 
 <style>

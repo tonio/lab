@@ -3,7 +3,6 @@
 
   export let items
   export let search
-  export let category = ''
 
   const MAX = 15
 
