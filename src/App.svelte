@@ -1,5 +1,6 @@
 <script>
   import List from './List.svelte'
+  import Categories from './Categories.svelte'
   import Search from './Search.svelte'
   import { loadData } from './data'
 
@@ -11,11 +12,12 @@
 
 </script>
 
-<Search on:change={setFilter}></Search>
+<Search value={search} on:change={setFilter}></Search>
 {#await loading}
   <p>Loading...</p>
 {:then items}
   <List {items} {search}></List>
+  <Categories {items} on:select={setFilter}></Categories>
 {:catch error}
   <p>
     Erreur de chargement du Google Sheet: «{error.message}»

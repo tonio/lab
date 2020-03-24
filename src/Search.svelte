@@ -1,9 +1,10 @@
 <script>
   import { createEventDispatcher } from 'svelte'
   import { onMount } from 'svelte'
-	const dispatch = createEventDispatcher()
 
-  let value = ''
+  export let value = ''
+
+	const dispatch = createEventDispatcher()
   let input
   const clear = () => { value = '' }
   $: dispatch('change', { value })
@@ -13,7 +14,7 @@
 
 <div class="container">
   <button class:value class="clear" on:click="{clear}">&times;</button>
-  <input bind:this={input} type="text" bind:value>
+  <input bind:this={input} type="text" bind:value placeholder="Rechercher">
 </div>
 
 <style>

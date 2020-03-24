@@ -30,6 +30,7 @@
     border-radius: var(--radius);
     margin: 0.5em 0;
     padding: 0;
+    align-items: center;
   }
   .name, .count, .location {
     padding: 0.25em;
