@@ -1,4 +1,4 @@
-#Lab
+![Build and Deploy](https://github.com/tonio/lab/workflows/Build%20and%20Deploy/badge.svg?branch=master)
 
 
 ## Get started
