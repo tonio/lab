@@ -20,20 +20,26 @@
 <style>
   input {
     border-radius: var(--radius);
+    border-color: var(--primary);
     width: 100%;
     padding: var(--radius);
+    margin: 0;
   }
   .container {
-    position: relative;
+    position: sticky;
+    top: 0;
+    background: var(--dark);
+    padding: 0.5em;
   }
   .clear {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.6em;
+    right: 0.6em;
     border: none;
-    background: none;
+    background: var(--dark);
+    color: var(--light);
     width: 1.5em;
-    font-size: 1.5em;
+    font-size: 1.19em;
     padding: 0px;
     display: none;
   }

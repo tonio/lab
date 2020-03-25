@@ -21,7 +21,7 @@
 
 <style>
   ul {
-    margin: 0;
+    margin: 0 0.25em;
     padding: 0;
   }
   li {
@@ -48,6 +48,7 @@
   .location {
     width: 3em;
     background: var(--blue);
+    color: var(--light);
   }
 </style>
 

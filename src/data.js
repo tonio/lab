@@ -30,6 +30,12 @@ export function match(search, items, max) {
   }
   search = search.toLowerCase()
   return items
-    .filter(item => item[key].toString().toLowerCase().indexOf(search) !== -1)
+    .filter(
+      item =>
+        item[key]
+          .toString()
+          .toLowerCase()
+          .indexOf(search) !== -1
+    )
     .splice(0, max)
 }
