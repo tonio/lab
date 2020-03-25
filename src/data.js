@@ -1,7 +1,16 @@
 import CSV from "csv.js"
 
+export const CAT = "Catégorie"
+export const ROOM = "Salle"
+export const SLUGS = {
+  [CAT]: "cat",
+  [ROOM]: "room"
+}
+
 const url =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vQbUP2MhLu5P34MJvOq1OqlLRAmQKMCjfILzEF-Ldcu7eF7UY-7f0Z2okTe-iIVUYUalpYhSK-KeM05/pub?output=csv"
+  "https://docs.google.com/spreadsheets/d/e/" +
+  "2PACX-1vQbUP2MhLu5P34MJvOq1OqlLRAmQKMCjfILzEF-Ldcu7eF7UY-" +
+  "7f0Z2okTe-iIVUYUalpYhSK-KeM05/pub?output=csv"
 
 export async function loadData() {
   return fetch(url)
@@ -10,8 +19,8 @@ export async function loadData() {
     .then(items => items.sort((a, b) => a.Nom.localeCompare(b.Nom)))
 }
 
-export function extractCategories(items) {
-  return [...new Set(items.map(i => i["Catégorie"]))]
+export function extract(items, key) {
+  return [...new Set(items.map(i => i[key]))]
 }
 
 export function match(search, items, max) {
@@ -21,6 +30,6 @@ export function match(search, items, max) {
   }
   search = search.toLowerCase()
   return items
-    .filter(item => item[key].toLowerCase().indexOf(search) !== -1)
+    .filter(item => item[key].toString().toLowerCase().indexOf(search) !== -1)
     .splice(0, max)
 }
