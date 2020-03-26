@@ -1,17 +1,20 @@
 <script>
+  import { createEventDispatcher } from 'svelte'
   import { match } from './data'
 
   export let items
   export let search
 
+	const dispatch = createEventDispatcher()
   const MAX = 15
+  const select = item => dispatch('select', { item })
 
   $: filtered = (search == '') ? [] : match(search, items, MAX)
 </script>
 
 <ul>
   {#each filtered as item}
-    <li>
+    <li on:click="{() => select(item)}">
       <span class=name>{item.Nom}</span>
       <span class=count>{item['Quantité']}</span>
       <span class=location>{item.Salle}</span>

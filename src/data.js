@@ -2,6 +2,11 @@ import CSV from "csv.js"
 
 export const CAT = "Catégorie"
 export const ROOM = "Salle"
+export const NAME = "Nom"
+export const PL= "Placard"
+export const NB = "Quantité"
+export const OO = "Rebut"
+export const CM = "Remarque"
 export const SLUGS = {
   [CAT]: "cat",
   [ROOM]: "room"
