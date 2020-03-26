@@ -9,8 +9,8 @@ export const SLUGS = {
 
 const url =
   "https://docs.google.com/spreadsheets/d/e/" +
-  "2PACX-1vQbUP2MhLu5P34MJvOq1OqlLRAmQKMCjfILzEF-Ldcu7eF7UY-" +
-  "7f0Z2okTe-iIVUYUalpYhSK-KeM05/pub?output=csv"
+  "2PACX-1vQR5DfQy_hzpZXaQAhbUp5XkjeIVnMzyNP-pKLl8s6dUlAfWO-aM9Rsb68owsADh9IxyR2ja96FZ6R9" +
+  "/pub?output=csv"
 
 export async function loadData() {
   return fetch(url)
