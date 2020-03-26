@@ -29,7 +29,7 @@
     padding: 0.25em 0;
   }
   .detail {
-    position: absolute;
+    position: fixed;
     background: rgba(255, 255, 255, 0.75);
     top: 100vh;
     left: 0;
