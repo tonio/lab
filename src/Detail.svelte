@@ -31,18 +31,17 @@
   .detail {
     position: fixed;
     background: rgba(255, 255, 255, 0.75);
-    top: 100vh;
+    height: 20em;
     left: 0;
     right: 0;
-    bottom: -50vh;
+    bottom: -31em;
     padding: 0.5em;
     border-top: 1px solid var(--dark);
     backdrop-filter: blur(4px);
-    transition: all ease 0.2s;
+    transition: bottom ease 0.2s;
   }
   .detail.item {
-    top: 50vh;
-    bottom: -1px;
+    bottom: 0;
   }
   .pill {
     position: absolute;
@@ -55,7 +54,7 @@
     display: inline-block;
     flex: 1;
     text-align: center;
-    line-height: 2em;
+    line-height: 3em;
   }
   .nb {
     background: var(--light);
