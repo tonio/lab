@@ -5,12 +5,14 @@
 </script>
 
 <div class="detail" class:item>
-  <button class="clear" on:click={close}>&times;</button>
   {#if item}
   <h1>
-    {item[NAME]}
-    <br>
-    <small>{item[CAT]}</small>
+    <span>
+      {item[NAME]}
+      <br>
+      <small>{item[CAT]}</small>
+    </span>
+    <button class="clear" on:click={close}>&times;</button>
   </h1>
   <div class="pill">
     <span class=nb>Quantité: {item[NB] || 0}</span><span class=oo>Rebut: {item[OO] || 0}</span>
@@ -27,6 +29,21 @@
     font-size: 1.1rem;
     margin: 0;
     padding: 0.25em 0;
+    display: flex;
+  }
+  h1 small {
+    color: var(--blue);
+  }
+  h1 span {
+    flex: 1;
+  }
+  .clear {
+    background: var(--gray);
+    color: var(--light);
+    border: none;
+    padding: 0 0.25em;
+    font-size: 1.8em;
+    height: 1.25em;
   }
   .detail {
     position: fixed;
@@ -62,14 +79,5 @@
   .oo {
     background: var(--red);
     color: var(--light);
-  }
-  .clear {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: none;
-    border: none;
-    font-size: 1.2em;
-    width: 2em;
   }
 </style>
