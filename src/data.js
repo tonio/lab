@@ -22,6 +22,7 @@ const clean = s => {
   if (s[NAME][0] === '"') {
     s[NAME] = s[NAME].slice(1, s[NAME].length - 1)
   }
+  s[NAME] = s[NAME].charAt(0).toUpperCase() + s[NAME].slice(1)
   s.debured = deburr(s[NAME]).toLowerCase()
 }
 
@@ -44,13 +45,15 @@ export function match(search, items, max) {
   if (search.indexOf(":") > 0) {
     ;[key, search] = search.split(":")
   }
-  search = deburr(search).toLowerCase()
+  if (key === "Nom") {
+    key = "debured"
+    search = deburr(search).toLowerCase()
+  }
   return items
     .filter(
       item =>
-        item[key === "Nom" ? "debured" : key]
+        item[key]
           .toString()
-          .toLowerCase()
           .indexOf(search) !== -1
     )
     .splice(0, max)
