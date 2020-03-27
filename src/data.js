@@ -1,4 +1,5 @@
 import CSV from "csv.js"
+import deburr from "lodash.deburr"
 
 export const CAT = "Catégorie"
 export const ROOM = "Salle"
@@ -18,7 +19,10 @@ const url =
   "/pub?output=csv"
 
 const clean = s => {
-  if (s[NAME][0] === '"') s[NAME] = s[NAME].slice(1, s[NAME].length - 1)
+  if (s[NAME][0] === '"') {
+    s[NAME] = s[NAME].slice(1, s[NAME].length - 1)
+  }
+  s.debured = deburr(s[NAME]).toLowerCase()
 }
 
 export async function loadData() {
@@ -30,7 +34,9 @@ export async function loadData() {
 }
 
 export function extract(items, key) {
-  return [...new Set(items.map(i => i[key]))].sort((a, b) => a.toString().localeCompare(b.toString()))
+  return [...new Set(items.map(i => i[key]))].sort((a, b) =>
+    a.toString().localeCompare(b.toString())
+  )
 }
 
 export function match(search, items, max) {
@@ -38,11 +44,11 @@ export function match(search, items, max) {
   if (search.indexOf(":") > 0) {
     ;[key, search] = search.split(":")
   }
-  search = search.toLowerCase()
+  search = deburr(search).toLowerCase()
   return items
     .filter(
       item =>
-        item[key]
+        item[key === "Nom" ? "debured" : key]
           .toString()
           .toLowerCase()
           .indexOf(search) !== -1
