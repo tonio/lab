@@ -6,7 +6,7 @@
   export let search
 
 	const dispatch = createEventDispatcher()
-  const MAX = 15
+  const MAX = 40
   const select = item => dispatch('select', { item })
 
   $: filtered = (search == '') ? [] : match(search, items, MAX)
