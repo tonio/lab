@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte'
-  import { match } from './data'
+  import { match, NAME, ROOM } from './data'
 
   export let items
   export let search
@@ -15,9 +15,8 @@
 <ul>
   {#each filtered as item}
     <li on:click="{() => select(item)}">
-      <span class=name>{item.Nom}</span>
-      <span class=count>{item['Quantité']}</span>
-      <span class=location>{item.Salle}</span>
+      <span class=name>{item[NAME]}</span>
+      <span class=location>{item[ROOM]}</span>
     </li>
   {/each}
 </ul>
