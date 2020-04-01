@@ -1,7 +1,12 @@
 <script>
+  import Map from './Map.svelte'
   import { NAME, ROOM, CAT, CM, PL, NB, OO } from './data'
   export let item
+  let location
   const close = () => (item = undefined)
+  $: location = item
+    ? (`Salle ${item[ROOM]}` + (item[PL] ? (', placard '+item[PL]) : ''))
+    : ''
 </script>
 
 <div class="detail" class:item>
@@ -14,13 +19,13 @@
     </span>
     <button class="clear" on:click={close}>&times;</button>
   </h1>
-  <div class="pill">
-    <span class=nb>Quantité: {item[NB] || 0}</span><span class=oo>Rebut: {item[OO] || 0}</span>
-  </div>
-  <p>Salle {item[ROOM]}{item[PL] ? `, placard ${item[PL]}` : ''}</p>
   {#if item[CM]}
   <p>{item[CM]}</p>
   {/if}
+  <Map {location}></Map>
+  <div class="pill">
+    <span class=nb>Quantité: {item[NB] || 0}</span><span class=oo>Rebut: {item[OO] || 0}</span>
+  </div>
   {/if}
 </div>
 
@@ -56,14 +61,19 @@
     border-top: 1px solid var(--dark);
     backdrop-filter: blur(4px);
     transition: bottom ease 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  :global(.map) {
+    flex: 1;
   }
   .detail.item {
     bottom: 0;
   }
+  p {
+    margin: 0 0 0.5em;
+  }
   .pill {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     display: flex;
     border-top: 1px solid var(--dark);
   }
