@@ -3,10 +3,12 @@
   import { NAME, ROOM, CAT, CM, PL, NB, OO } from './data'
   export let item
   let location
+  let room
   const close = () => (item = undefined)
   $: location = item
     ? (`Salle ${item[ROOM]}` + (item[PL] ? (', placard '+item[PL]) : ''))
     : ''
+  $: room = item ? item[ROOM] : null
 </script>
 
 <div class="detail" class:item>
@@ -22,7 +24,7 @@
   {#if item[CM]}
   <p>{item[CM]}</p>
   {/if}
-  <Map {location}></Map>
+  <Map {location} {room}></Map>
   <div class="pill">
     <span class=nb>Quantité: {item[NB] || 0}</span><span class=oo>Rebut: {item[OO] || 0}</span>
   </div>

@@ -8,23 +8,37 @@
   import GeoJSON from "ol/format/GeoJSON"
   import VectorLayer from "ol/layer/Vector"
   import VectorSource from "ol/source/Vector"
-  import {Stroke, Style} from "ol/style"
+  import {Fill, RegularShape, Stroke, Style} from "ol/style"
 
   export let location
+  export let room
 
   let el
   let map
+  const stroke = new Stroke({
+    color: "#999",
+    width: 1
+  })
+  const fill = new Fill({color: 'yellow'})
+  const line = new Style({ stroke })
+  const star = new Style({
+    image: new RegularShape({
+      fill,
+      stroke,
+      points: 5,
+      radius: 10,
+      radius2: 4,
+      angle: 0,
+    })
+  })
   const vector = new VectorLayer({
     source: new VectorSource({
       url: "map.geojson",
       format: new GeoJSON()
     }),
-    style: new Style({
-        stroke: new Stroke({
-        color: "#999",
-        width: 1
-      }),
-    }),
+    style: f => 'room' in f.getProperties() && f.getProperties()['room'] !== ''
+      ? f.getProperties()['room'] === room ? star : []
+      : line
   })
 
   onMount(() => {
@@ -61,7 +75,7 @@
     text-align: center;
     z-index: 1;
     position: absolute;
-    bottom: 0;
+    bottom: 0.5em;
     width: 100%;
   }
   .location span {
