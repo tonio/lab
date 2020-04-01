@@ -49,7 +49,7 @@
 
 <div bind:this={el} class="map">
   {#if location}
-  <div class=location>{location}</div>
+    <div class=location><span>{location}</span></div>
   {/if}
 </div>
 
@@ -58,12 +58,14 @@
     position: relative;
   }
   .location {
-    position: absolute;
-    bottom: 0.5em;
-    left: calc(50% - 3em);
-    width: 4em;
+    text-align: center;
     z-index: 1;
-    width: 6em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .location span {
+    display: inline-block;
     background: rgba(0,0,0,0.5);
     padding: 0.25em;
     text-align: center;
