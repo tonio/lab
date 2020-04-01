@@ -52,12 +52,11 @@
       target: el,
       view: new View({
         center: [660632.247146, 5710889.258906],
-        zoom: 18.5,
+        zoom: 18,
         rotation: -0.601,
       }),
       controls: [],
     })
-    window.map = map
   })
 </script>
 
