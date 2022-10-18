@@ -14,7 +14,7 @@ export const SLUGS = {
 }
 
 const url =
-  "https://cors-anywhere.herokuapp.com/docs.google.com/spreadsheets/d/e/" +
+  "https://docs.google.com/spreadsheets/d/e/" +
   "2PACX-1vQR5DfQy_hzpZXaQAhbUp5XkjeIVnMzyNP-pKLl8s6dUlAfWO-aM9Rsb68owsADh9IxyR2ja96FZ6R9" +
   "/pub?output=csv"
 
