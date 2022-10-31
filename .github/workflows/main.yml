@@ -18,6 +18,10 @@ jobs:
           yarn
           yarn build
 
+      - name: Test 🔧 
+        run: |
+          yarn test
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
