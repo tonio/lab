@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import { onMount } from 'svelte'
 
-  export let value = ''
+  export let value: string = ''
 
 	const dispatch = createEventDispatcher()
   let input

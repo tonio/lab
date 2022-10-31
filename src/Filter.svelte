@@ -1,13 +1,16 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte'
-  import { extract, SLUGS } from './data'
+  import { CAT, ROOM } from './data'
+  const SLUGS = {
+    [CAT]: "cat",
+    [ROOM]: "room"
+  }
 
-  export let type
-  export let items=[]
+  export let type: string
+  export let values: string[]
 
 	const dispatch = createEventDispatcher()
-  const values = extract(items, type)
-  const select = cat => dispatch('select', { value: `${type}:${cat}` })
+  const select = (cat: string) => dispatch('select', { value: `${type}:${cat}` })
 </script>
 
 <h2>{type}</h2>

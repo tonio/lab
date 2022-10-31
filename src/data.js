@@ -13,10 +13,7 @@ export const SLUGS = {
   [ROOM]: "room"
 }
 
-const url =
-  "https://docs.google.com/spreadsheets/d/e/" +
-  "2PACX-1vQR5DfQy_hzpZXaQAhbUp5XkjeIVnMzyNP-pKLl8s6dUlAfWO-aM9Rsb68owsADh9IxyR2ja96FZ6R9" +
-  "/pub?output=csv"
+const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSN7PTLQguJoI4-XzKxT7e6DOiVeJGNTOD4iwEo9XfICxki144NU8TZgvRiXrpUn2htBgPCpa3DhtfH/pub?gid=1946404634&single=true&output=csv"
 
 const clean = s => {
   if (s[NAME][0] === '"') {

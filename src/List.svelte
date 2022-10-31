@@ -1,51 +1,45 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import { match, NAME, ROOM } from './data'
 
   export let items
-  export let search
 
 	const dispatch = createEventDispatcher()
-  const MAX = 40
   const select = item => dispatch('select', { item })
-
-  $: filtered = (search == '') ? [] : match(search, items, MAX)
 </script>
 
-<ul>
-  {#each filtered as item}
-    <li on:click="{() => select(item)}">
+<div class="container">
+  {#each items as item}
+    <button on:click="{() => select(item)}">
       <span class=name>{item[NAME]}</span>
       <span class=location>{item[ROOM]}</span>
-    </li>
+    </button>
   {/each}
-</ul>
+</div>
 
 <style>
-  ul {
+  .container {
     margin: 0 0.25em;
     padding: 0;
   }
-  li {
+  button {
     display: flex;
     border: 1px solid #ddd;
     border-radius: var(--radius);
     margin: 0.5em 0;
     padding: 0;
     align-items: center;
+    width: 100%;
   }
-  .name, .count, .location {
+  .name, .location {
     padding: 0.25em;
   }
   .name {
     flex: 1
   }
-  .count, .location {
+  .location {
     display: inline-block;
     text-align: center;
-  }
-  .count {
-    width: 2em;
   }
   .location {
     width: 3em;
